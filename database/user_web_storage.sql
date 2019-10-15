@@ -1,11 +1,4 @@
-# Create web storage user and give privileges on tables:
-# tbl_colors: select
-# tbl_shapes: select
-# tbl_users: select, update, delete and insert
-# tbl_projects: select, update, delete and insert
-# tbl_pieces: select, update, delete and insert
-
-CREATE USER `web_storage`@`localhost` IDENTIFIED WITH caching_sha2_password PASSWORD EXPIRE NEVER;
+CREATE USER `web_storage`@`localhost` IDENTIFIED BY '1234' WITH mysql_native_password PASSWORD EXPIRE NEVER;
 
 GRANT Select ON `voicetosolid`.* TO `web_storage`@`localhost`;
 
