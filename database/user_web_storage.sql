@@ -1,4 +1,8 @@
-CREATE USER `web_storage`@`localhost` IDENTIFIED BY '1234' WITH mysql_native_password PASSWORD EXPIRE NEVER;
+#create user web_storage with the following privileges:
+#tables tbl_colors and tbl_shapes: select only
+#tables tbl_users, tbl_project and tbl_pieces: select, update, delete and insert
+
+CREATE USER `web_storage`@`localhost` IDENTIFIED WITH mysql_native_password BY '1234' PASSWORD EXPIRE NEVER;
 
 GRANT Select ON `voicetosolid`.* TO `web_storage`@`localhost`;
 
