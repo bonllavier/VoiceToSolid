@@ -23,7 +23,7 @@ app.get('/', function (request, response) {
 
 app.get('/home', function (request, response) {
     if (request.session.loggedin) {
-        response.sendFile(path.join(__dirname + '/templates/home.html'));
+        response.sendFile(path.join(__dirname + '/templates/home2.html'));
     } else {
         response.send('Please login to view this page!');
     }
