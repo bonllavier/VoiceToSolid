@@ -13,7 +13,6 @@
             height: 100%;
         }
     </style>
-    <link rel="stylesheet" type="text/css" href="/css/home2.css">
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/styles.css">
 </head>
@@ -26,7 +25,9 @@
         <p>HOW TO USE:</p>
         <p style="color: rgb(0,0,0);">Just press the&nbsp;<strong>RED BUTTON</strong>&nbsp;below to record a command, in order to show it in the Canvas.</p>
         <hr>
-        <canvas id="c"></canvas>
+        <canvas id="c">
+		</canvas>
+		<button class="btn btn-primary" type="button" style="background-color: rgb(255,0,0);margin: 0px;width: 211px;padding: 23px;" id="recordbtn"">RECORD</button>
         <hr>
         <div class="row">
             <div class="col offset-xl-0">
@@ -38,60 +39,14 @@
                     <li>ORANGE</li>
                 </ul>
             </div>
-            <div class="col-xl-6 offset-xl-0"><button class="btn btn-primary" type="button" style="background-color: rgb(255,0,0);margin: 0px;width: 211px;padding: 23px;">RECORD</button></div>
+            <div class="col-xl-6 offset-xl-0">
+			<button class="btn btn-primary" type="button" style="background-color: rgb(255,0,0);margin: 0px;width: 211px;padding: 23px;">RECORD</button>
+			</div>
         </div>
         <hr>
     </div>
-    <script type="module">import * as THREE from '../build/three.module.js';
+	<script type="module" src="/scripts/home2.js"></script>
+	
 
-    function main() {
-        const canvas = document.querySelector('#c');
-        const renderer = new THREE.WebGLRenderer({ canvas });
-        //renderer.setSize(window.innerWidth, window.innerHeight);
-
-        //container = document.getElementById('#c');
-        renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-        //renderer.setSize(800, 600);
-        //container.appendChild(renderer.domElement);
-
-        const fov = 75;
-        const aspect = 2;  // the canvas default
-        const near = 0.1;
-        const far = 5;
-        const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-        camera.position.z = 2;
-
-        camera.aspect = canvas.clientWidth / canvas.clientHeight;
-        camera.updateProjectionMatrix();
-
-        const scene = new THREE.Scene();
-
-        const boxWidth = 1;
-        const boxHeight = 1;
-        const boxDepth = 1;
-        const geometry = new THREE.BoxGeometry(boxWidth, boxHeight, boxDepth);
-
-        const material = new THREE.MeshBasicMaterial({ color: 0x44aa88 });  // greenish blue
-
-        const cube = new THREE.Mesh(geometry, material);
-        scene.add(cube);
-
-
-        function render(time) {
-            time *= 0.001;  // convert time to seconds
-
-            cube.rotation.x = time;
-            cube.rotation.y = time;
-
-            renderer.render(scene, camera);
-
-            requestAnimationFrame(render);
-        }
-        requestAnimationFrame(render);
-    }
-
-    main();</script>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
