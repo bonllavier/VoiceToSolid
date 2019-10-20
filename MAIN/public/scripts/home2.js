@@ -1,6 +1,7 @@
 import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r108/build/three.module.js';
 
 function main() {
+	// MAIN METHOD THAT GOING TO INITIATE CAMERA, SCENE AND THE FIRST ROTATING CUBE
 	const canvas = document.querySelector('#c');
 	const renderer = new THREE.WebGLRenderer({
 			canvas
@@ -42,13 +43,17 @@ function main() {
 
 		requestAnimationFrame(render);
 	}
+	//THIS IS THE NATIVE METHOD THAT UPDATE THE CANVAS ON EACH FRAME
 	requestAnimationFrame(render);
 
+	//A METHOD TO GENERATE RANDOM NUMBERS BETWEEN 0 AND A MAX NUMBER
 	function randBet(maxnum) {
 		var num = Math.floor(Math.random()*maxnum) + 1; // this will get a number between 1 and 99;
 		num *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
 		return num;
 	}
+	
+	//METHOD TO MANAGE THE CLICK METHOD IN THE RED BUTTON RECORD, HERE INITIATE THE RECORDING OF THE AUDIO BUFFER AND INSTANTIATE THE OBJECT
 	document.getElementById("recordbtn").onclick = function () {
 		console.log("NEW CUBE");
 		const geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -63,4 +68,5 @@ function main() {
 	}
 }
 
+//HERE WE EXECUTE ALL THAT THE MAIN METHOD HAVE
 main();
