@@ -1,6 +1,7 @@
 let rec = null;
 let audioStream = null;
-
+var textranscript;
+import * as home2 from './home2.js';
 const recordButton = document.getElementById("recordbtn");
 
 recordButton.addEventListener("click", startRecording);
@@ -24,7 +25,7 @@ function startRecording() {
 
     function transcribeText() {
         recordButton.disabled = false;
-        rec.stop()
+        rec.stop();
         audioStream.getAudioTracks()[0].stop();
         rec.exportWAV(uploadSoundData);
     }
@@ -36,7 +37,16 @@ function uploadSoundData(blob) {
     xhr.onload = function (e) {
         if (this.readyState === 4) {
           document.getElementById("outputAPI").innerHTML = `<strong>Comand: </strong>${e.target.responseText}`
-            console.log(e.target.responseText)
+            textranscript = e.target.responseText;
+            console.log(e.target.responseText);
+            var letters = /^[A-Za-z]+$/;
+            if (textranscript.match(/[A-Za-z]/i)) {
+                if (textranscript.includes(" ")) {
+                    var objgoogle = textranscript.split(" ");
+                }
+                home2.instanciateobj(objgoogle[0], objgoogle[1]);
+            }
+
         }
     };
     let formData = new FormData();

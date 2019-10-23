@@ -17,6 +17,8 @@ app.use(express.static('public'));
 
 var authenticateController = require('./controllers/authenticate-controller');
 var registerController = require('./controllers/register-controller');
+var verifyShape = require('./session/verif_shape');
+var verifyColor = require('./session/verif_color');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -29,7 +31,7 @@ app.get('/home', function (request, response) {
     if (request.session.loggedin) {
         response.sendFile(path.join(__dirname + '/templates/home2.html'));
     } else {
-        response.send('Please login to view this page!');
+        response.sendFile(path.join(__dirname + '/templates/login.html'));
     }
 });
 
@@ -45,6 +47,10 @@ app.get('/signup', function (req, res) {
     res.sendFile(path.join(__dirname + '/templates/signup.html'));
 })
 
+app.get('/apiuser', function (req, res) {
+    res.json({ "username": req.session.username });
+})
+
 /* route to handle login and registration */
 app.post('/api/register', registerController.register);
 app.post('/api/authenticate', authenticateController.authenticate);
@@ -52,6 +58,11 @@ app.post('/api/authenticate', authenticateController.authenticate);
 console.log(authenticateController);
 app.post('/controllers/register-controller', registerController.register);
 app.post('/controllers/authenticate-controller', authenticateController.authenticate);
+
+//POST METHOD TO VERIFY IN THE DATABASE IS SHAPE EXIST
+app.post('/session/verif_shape', verifyShape.verifyshape);
+//POST METHOD TO VERIFY IN THE DATABASE IS COLOR EXISTXCV
+app.post('/session/verif_color', verifyColor.verifycolor);
 
 /* sound capture and use of speech api */
 async function testGoogleTextToSpeech(audioBuffer) {
