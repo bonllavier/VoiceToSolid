@@ -1,18 +1,18 @@
 import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r108/build/three.module.js';
 
 
-var arrayobj = [];
-var camera, scene, renderer;
-var username;
-var shape_verf, color_verf;
-var color_hexcode;
+let arrayobj = [];
+let camera, scene, renderer;
+let username;
+let shape_verf, color_verf;
+let color_hexcode;
 //HERE WE EXECUTE ALL THAT THE MAIN METHOD HAVE
 main();
 
 function main() {
 
     // OBJECTS THAT THE DATABASE NEEDS ADN FOR THE SESSIONS
-    var projectname = "default";
+    let projectname = "default";
     //var arrayobj = [];
     // MAIN METHOD THAT GOING TO INITIATE CAMERA, SCENE AND THE FIRST ROTATING CUBE
     const canvas = document.querySelector('#c');
@@ -126,34 +126,40 @@ export function instanciateobj(tshape, tcolor) {
         console.log(color_hexcode);
     }
 
-    if (shape_verf === true && color_verf === true) {
-        if (tshape.equals("cube") == true) {
+	console.log(shape_verf + ": " + color_verf);
+    if (shape_verf === "true" && color_verf === "true") {
+		console.log("entro a la validacion final");
+        if (tshape.equals("cube") === true) {
             const geometry = new THREE.BoxGeometry(1, 1, 1);
             const material = new THREE.MeshBasicMaterial({ color: color_hexcode });
             const cube = new THREE.Mesh(geometry, material);
             scene.add(cube);
             cube.position.set(randBet(2), randBet(2), 0);
+			console.log("NEW CUBE");
         }
-        else if (tshape.equals("triangle") == true) {
+        else if (tshape.equals("triangle") === true) {
             var geometry = new THREE.ConeGeometry(5, 20, 32);
             var material = new THREE.MeshBasicMaterial({ color: color_hexcode });
             var cone = new THREE.Mesh(geometry, material);
             scene.add(cone);
             cone.position.set(randBet(2), randBet(2), 0);
+			console.log("NEW TRIANGLE");
         }
-        else if (tshape.equals("circle") == true) {
+        else if (tshape.equals("circle") === true) {
             var geometry = new THREE.CircleGeometry(5, 32);
             var material = new THREE.MeshBasicMaterial({ color: color_hexcode });
             var circle = new THREE.Mesh(geometry, material);
             scene.add(circle);
             circle.position.set(randBet(2), randBet(2), 0);
+			console.log("NEW CIRCLE");
         }
-        else if (tshape.equals("cylinder") == true) {
+        else if (tshape.equals("cylinder") === true) {
             var geometry = new THREE.CylinderGeometry(5, 5, 20, 32);
             var material = new THREE.MeshBasicMaterial({ color: color_hexcode });
             var cylinder = new THREE.Mesh(geometry, material);
             scene.add(cylinder);
             cylinder.position.set(randBet(2), randBet(2), 0);
+			console.log("NEW CYLINDER");
         }
     }
     //console.log(dataRecieved);
