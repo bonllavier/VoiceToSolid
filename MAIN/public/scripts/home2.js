@@ -4,7 +4,7 @@ import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threej
 let arrayobj = [];
 let camera, scene, renderer;
 let username;
-let shape_verf, color_verf;
+//let shape_verf, color_verf;
 let color_hexcode;
 //HERE WE EXECUTE ALL THAT THE MAIN METHOD HAVE
 main();
@@ -89,7 +89,8 @@ function randBet(maxnum) {
 
 export function instanciateobj(tshape, tcolor) {
     console.log(arrayobj);
-
+	console.log(arrayobj);
+	let shape_verf, color_verf;
 
     // PART 2
 
@@ -106,66 +107,91 @@ export function instanciateobj(tshape, tcolor) {
         var data = JSON.parse(this.responseText);
         shape_verf = data.status;
         console.log(shape_verf);
-    }
-
-    var xhr2 = new XMLHttpRequest();
-    xhr2.open("POST", "/session/verif_color", true);
-    xhr2.setRequestHeader('Content-Type', 'application/json');
-    xhr2.send(JSON.stringify({
+		
+		var xhr2 = new XMLHttpRequest();
+		xhr2.open("POST", "/session/verif_color", true);
+		xhr2.setRequestHeader('Content-Type', 'application/json');
+		xhr2.send(JSON.stringify({
         color: tcolor
-    }));
-    xhr2.onload = function () {
-        console.log("color validation")
-        //			console.log(this.responseText);
-        var data = JSON.parse(this.responseText);
-        color_verf = data.status;
-        if (color_verf) {
-            color_hexcode = data.result;
-        }
-        console.log(color_verf);
-        console.log(color_hexcode);
+		}));
+			xhr2.onload = function () {
+			console.log("color validation")
+			//			console.log(this.responseText);
+			var data = JSON.parse(this.responseText);
+			color_verf = data.status;
+			if (color_verf) {
+				color_hexcode = data.result;
+			}
+			console.log(color_verf);
+			console.log(color_hexcode);
+				
+				console.log(shape_verf + ": " + color_verf);
+				if (shape_verf === true && color_verf === true) {
+					console.log("entro a la validacion final");
+					if (tshape.localeCompare("cube") === 0) {
+						const geometry = new THREE.BoxGeometry(1, 1, 1);
+						const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+						const cube = new THREE.Mesh(geometry, material);
+						scene.add(cube);
+						cube.position.set(randBet(2), randBet(2), 0);
+						console.log("NEW CUBE");
+					}
+					else if (tshape.localeCompare("triangle") === 0) {
+						//var geometry = new THREE.ConeGeometry(5, 20, 32);
+						//var material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+						//var cone = new THREE.Mesh(geometry, material);
+						//scene.add(cone);
+						//cone.position.set(randBet(2), randBet(2), 0);
+						//console.log("NEW TRIANGLE");
+						const geometry = new THREE.BoxGeometry(1, 1, 1);
+						const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+						const cube = new THREE.Mesh(geometry, material);
+						scene.add(cube);
+						cube.position.set(randBet(2), randBet(2), 0);
+						console.log("NEW CUBE");
+					}
+					else if (tshape.localeCompare("circle") === 0) {
+						//var geometry = new THREE.CircleGeometry(5, 32);
+						//var material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+						//var circle = new THREE.Mesh(geometry, material);
+						//scene.add(circle);
+						//circle.position.set(randBet(2), randBet(2), 0);
+						//console.log("NEW CIRCLE");						
+						const geometry = new THREE.BoxGeometry(1, 1, 1);
+						const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+						const cube = new THREE.Mesh(geometry, material);
+						scene.add(cube);
+						cube.position.set(randBet(2), randBet(2), 0);
+						console.log("NEW CUBE");
+					}
+					else if (tshape.localeCompare("cylinder") === 0) {
+						//var geometry = new THREE.CylinderGeometry(5, 5, 20, 32);
+						//var material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+						//var cylinder = new THREE.Mesh(geometry, material);
+						//scene.add(cylinder);
+						//cylinder.position.set(randBet(2), randBet(2), 0);
+						//console.log("NEW CYLINDER");
+						const geometry = new THREE.BoxGeometry(1, 1, 1);
+						const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+						const cube = new THREE.Mesh(geometry, material);
+						scene.add(cube);
+						cube.position.set(randBet(2), randBet(2), 0);
+						console.log("NEW CUBE");
+					}
+				}
+				//console.log(dataRecieved);
+				// if the color exist, here made a post to the backend to verify that
+				//console.log(username.username);
+				arrayobj.push([username.username, tshape, tcolor, color_hexcode]);	
+					
+			}
+		
+		
     }
 
-	console.log(shape_verf + ": " + color_verf);
-    if (shape_verf === "true" && color_verf === "true") {
-		console.log("entro a la validacion final");
-        if (tshape.equals("cube") === true) {
-            const geometry = new THREE.BoxGeometry(1, 1, 1);
-            const material = new THREE.MeshBasicMaterial({ color: color_hexcode });
-            const cube = new THREE.Mesh(geometry, material);
-            scene.add(cube);
-            cube.position.set(randBet(2), randBet(2), 0);
-			console.log("NEW CUBE");
-        }
-        else if (tshape.equals("triangle") === true) {
-            var geometry = new THREE.ConeGeometry(5, 20, 32);
-            var material = new THREE.MeshBasicMaterial({ color: color_hexcode });
-            var cone = new THREE.Mesh(geometry, material);
-            scene.add(cone);
-            cone.position.set(randBet(2), randBet(2), 0);
-			console.log("NEW TRIANGLE");
-        }
-        else if (tshape.equals("circle") === true) {
-            var geometry = new THREE.CircleGeometry(5, 32);
-            var material = new THREE.MeshBasicMaterial({ color: color_hexcode });
-            var circle = new THREE.Mesh(geometry, material);
-            scene.add(circle);
-            circle.position.set(randBet(2), randBet(2), 0);
-			console.log("NEW CIRCLE");
-        }
-        else if (tshape.equals("cylinder") === true) {
-            var geometry = new THREE.CylinderGeometry(5, 5, 20, 32);
-            var material = new THREE.MeshBasicMaterial({ color: color_hexcode });
-            var cylinder = new THREE.Mesh(geometry, material);
-            scene.add(cylinder);
-            cylinder.position.set(randBet(2), randBet(2), 0);
-			console.log("NEW CYLINDER");
-        }
-    }
-    //console.log(dataRecieved);
-    // if the color exist, here made a post to the backend to verify that
-    //console.log(username.username);
-    arrayobj.push([username.username, tshape, tcolor, color_hexcode]);
+
+
+	
 }
 
 //document.getElementById("recordbtn").onclick = function () {
