@@ -36,7 +36,7 @@ function uploadSoundData(blob) {
     let xhr = new XMLHttpRequest();
     xhr.onload = function (e) {
         if (this.readyState === 4) {
-          document.getElementById("outputAPI").innerHTML = `<strong>Comand: </strong>${e.target.responseText}`
+          document.getElementById("outputAPI").innerHTML = `<strong>Command: </strong>${e.target.responseText}`
             textranscript = e.target.responseText;
             console.log(e.target.responseText);
             var letters = /^[A-Za-z]+$/;

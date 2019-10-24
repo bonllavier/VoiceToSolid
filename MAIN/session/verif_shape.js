@@ -15,7 +15,7 @@ module.exports.verifyshape = function (req, res) {
             if (results.length > 0) {
                     res.json({
                         status: true,
-                        message: 'Shape exist'
+                        constructor: results[0].command_three
                     })
             }
             else {
