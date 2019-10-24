@@ -135,31 +135,6 @@ export function instanciateobj(tshape, tcolor) {
                 scene.add(cube);
                 cube.position.set(randBet(2), randBet(2), 0);
                 console.log("NEW CUBE");
-
-                /*else if (tshape.localeCompare("triangle") === 0) {
-                    const geometry = new THREE.CircleGeometry(1, 3);
-                    const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-                    const triangle = new THREE.Mesh(geometry, material);
-                    scene.add(triangle);
-                    cube.position.set(randBet(2), randBet(2), 0);
-                    console.log("NEW TRIANGLE");
-                }
-                else if (tshape.localeCompare("circle") === 0) {						
-                    const geometry = new THREE.CircleGeometry(1, 32);
-                    const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-                    const cube = new THREE.Mesh(geometry, material);
-                    scene.add(cube);
-                    cube.position.set(randBet(2), randBet(2), 0);
-                    console.log("NEW CIRCLE");
-                }
-                else if (tshape.localeCompare("cylinder") === 0) {
-                    const geometry = new THREE.CylinderGeometry(1, 1, 1, 32);
-                    const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-                    const cube = new THREE.Mesh(geometry, material);
-                    scene.add(cube);
-                    cube.position.set(randBet(2), randBet(2), 0);
-                    console.log("NEW CYLINDER");
-                }*/
             }
             //console.log(dataRecieved);
             // if the color exist, here made a post to the backend to verify that
