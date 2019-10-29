@@ -6,6 +6,7 @@ let camera, scene, renderer;
 let username;
 //let shape_verf, color_verf;
 let color_hexcode;
+
 //HERE WE EXECUTE ALL THAT THE MAIN METHOD HAVE
 main();
 
@@ -20,12 +21,12 @@ function main() {
         canvas
     });
 
-    const fov = 75;
+    const fov = 30;
     const aspect = 2; // the canvas default
     const near = 0.1;
-    const far = 5;
+    const far = 20;
     camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-    camera.position.z = 2;
+    camera.position.z = 12;
 
     //I DONT KNOW IF THIS IS NECCESARY, DOESNT SEEM TO HAVE ANY IMPACT
     camera.aspect = canvas.clientWidth / canvas.clientHeight;
@@ -33,19 +34,26 @@ function main() {
     //
 
     scene = new THREE.Scene();
+    const intensity = 1;
+    const color = "0xFFFFFF";
+    const light = new THREE.DirectionalLight(color, intensity);
+    light.position.set(-1, 2, 4);
+    scene.add(light);
+    scene.background = new THREE.Color(0xd2d2d2);
 
     const boxWidth = 1;
     const boxHeight = 1;
     const boxDepth = 1;
     const geometry = new THREE.BoxGeometry(boxWidth, boxHeight, boxDepth);
 
-    const material = new THREE.MeshBasicMaterial({
+    const material = new THREE.MeshPhongMaterial({
         color: 0x44aa88
     }); // greenish blue
 
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
     arrayobj.push(['cube', 0xf9d62e]);
+    
 
     function render(time) {
         time *= 0.001; // convert time to seconds
@@ -130,16 +138,35 @@ export function instanciateobj(tshape, tcolor) {
             if (shape_verf === true && color_verf === true) {
                 console.log("entro a la validacion final");
                 const geometry = eval(command_three);
-                const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+                const material = new THREE.MeshPhongMaterial({ color: 0xff00ff});
                 const cube = new THREE.Mesh(geometry, material);
+                cube.material.color.setHex(color_hexcode);
                 scene.add(cube);
                 cube.position.set(randBet(2), randBet(2), 0);
                 console.log("NEW CUBE");
+                arrayobj.push([username.username, tshape, tcolor, color_hexcode]);
             }
             //console.log(dataRecieved);
             // if the color exist, here made a post to the backend to verify that
             //console.log(username.username);
-            arrayobj.push([username.username, tshape, tcolor, color_hexcode]);
+            
+        }
+    }
+}
+
+const cleanButton = document.getElementById("cleanbtn");
+document.addEventListener('DOMContentLoaded', function () {
+    cleanButton.addEventListener('click', clean);
+});
+
+function clean() {
+    console.log("OBJS LEN: " + scene.children.length);
+    console.log("DELETED LIST OBJS");
+    while (scene.children.length > 1) {
+        //console.log(scene.children[cont]);
+        if (scene.children[1].type == "Mesh") {
+            scene.remove(scene.children[1]);
+            console.log("OBJ DELETED: " + scene.children[1]);
         }
     }
 }
