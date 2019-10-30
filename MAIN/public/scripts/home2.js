@@ -53,7 +53,7 @@ function main() {
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
     arrayobj.push(['cube', 0xf9d62e]);
-    
+
 
     function render(time) {
         time *= 0.001; // convert time to seconds
@@ -138,7 +138,7 @@ export function instanciateobj(tshape, tcolor) {
             if (shape_verf === true && color_verf === true) {
                 console.log("entro a la validacion final");
                 const geometry = eval(command_three);
-                const material = new THREE.MeshPhongMaterial({ color: 0xff00ff});
+                const material = new THREE.MeshPhongMaterial({ color: 0xff00ff });
                 const cube = new THREE.Mesh(geometry, material);
                 cube.material.color.setHex(color_hexcode);
                 scene.add(cube);
@@ -149,7 +149,7 @@ export function instanciateobj(tshape, tcolor) {
             //console.log(dataRecieved);
             // if the color exist, here made a post to the backend to verify that
             //console.log(username.username);
-            
+
         }
     }
 }
@@ -168,5 +168,18 @@ function clean() {
             scene.remove(scene.children[1]);
             console.log("OBJ DELETED: " + scene.children[1]);
         }
+    }
+}
+
+const delete_lastButton = document.getElementById("deletebtn");
+document.addEventListener('DOMContentLoaded', function () {
+    delete_lastButton.addEventListener('click', delete_last);
+});
+
+function delete_last() {
+    const last_shape = scene.children.length - 1;
+    if (scene.children[last_shape].type == "Mesh") {
+        scene.remove(scene.children[last_shape]);
+        console.log("OBJ DELETED: " + scene.children[last_shape]);
     }
 }
