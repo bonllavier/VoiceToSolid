@@ -1,11 +1,14 @@
 import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r108/build/three.module.js';
 
 
-let arrayobj = [];
+let arrayobjs = [];
 let camera, scene, renderer;
 let username;
+let user_id;
 //let shape_verf, color_verf;
 let color_hexcode;
+let color_id;
+let shape_id;
 
 //HERE WE EXECUTE ALL THAT THE MAIN METHOD HAVE
 main();
@@ -52,7 +55,7 @@ function main() {
 
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
-    arrayobj.push(['cube', 0xf9d62e]);
+    arrayobjs.push(['cube', 0xf9d62e]);
 
 
     function render(time) {
@@ -76,6 +79,16 @@ function main() {
         .then(data => {
             // Work with JSON data here
             username = data;
+            xhr.open("POST", "/session/req_user", true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({
+                user_name: user_name
+            }));
+            xhr.onload = function () {
+                let data = JSON.parse(this.responseText);
+                user_id = data.user_id;
+            }
+            console.log("user access to: " + username.username + " id: " + user_id);
         })
         .catch(err => {
             // Do something for an error here
@@ -96,13 +109,14 @@ function randBet(maxnum) {
 }
 
 export function instanciateobj(tshape, tcolor) {
-    console.log(arrayobj);
+    console.log(arrayobjs);
     let shape_verf, color_verf;
     let command_three;
+
     // PART 2
 
     // if the shape name exist, here made a post to the backend to verify that
-    var xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
     xhr.open("POST", "/session/verif_shape", true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify({
@@ -111,13 +125,14 @@ export function instanciateobj(tshape, tcolor) {
     xhr.onload = function () {
         console.log("shape validation")
         //			console.log(this.responseText);
-        var data = JSON.parse(this.responseText);
+        let data = JSON.parse(this.responseText);
         shape_verf = data.status;
         command_three = data.constructor;
+        shape_id = data.shape_id;
         console.log(shape_verf);
         console.log(command_three);
 
-        var xhr2 = new XMLHttpRequest();
+        let xhr2 = new XMLHttpRequest();
         xhr2.open("POST", "/session/verif_color", true);
         xhr2.setRequestHeader('Content-Type', 'application/json');
         xhr2.send(JSON.stringify({
@@ -126,10 +141,11 @@ export function instanciateobj(tshape, tcolor) {
         xhr2.onload = function () {
             console.log("color validation")
             //			console.log(this.responseText);
-            var data = JSON.parse(this.responseText);
+            let data = JSON.parse(this.responseText);
             color_verf = data.status;
             if (color_verf) {
                 color_hexcode = data.result;
+                color_id = data.color_id;
             }
             console.log(color_verf);
             console.log(color_hexcode);
@@ -144,7 +160,7 @@ export function instanciateobj(tshape, tcolor) {
                 scene.add(cube);
                 cube.position.set(randBet(2), randBet(2), 0);
                 console.log("NEW CUBE");
-                arrayobj.push([username.username, tshape, tcolor, color_hexcode]);
+                arrayobjs.push([tshape, tcolor, color_id, shape_id]);
             }
             //console.log(dataRecieved);
             // if the color exist, here made a post to the backend to verify that
@@ -182,4 +198,28 @@ function delete_last() {
         scene.remove(scene.children[last_shape]);
         console.log("OBJ DELETED: " + scene.children[last_shape]);
     }
+}
+
+const saveButton = document.getElementById("savebtn");
+document.addEventListener('DOMContentLoaded', function () {
+    saveButton.addEventListener('click', save);
+});
+
+
+function save() {
+    console.log("function save");
+    let project_name = document.getElementById("projectname").textContent;
+    console.log(shape_id + " " + color_id);
+    console.log(user_id + " " + project_name);
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "/session/save_project", true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({
+        user_name: username.username,
+        user_id: user_id,
+        project_name: document.getElementById("projectname").textContent,
+        shapes_id: shape_id,
+        colors_id: color_id
+    }));
+
 }

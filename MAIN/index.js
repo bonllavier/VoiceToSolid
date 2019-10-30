@@ -1,13 +1,13 @@
-var express = require("express");
-var session = require('express-session');
-var bodyParser = require('body-parser');
-var path = require('path');
+let express = require("express");
+let session = require('express-session');
+let bodyParser = require('body-parser');
+let path = require('path');
 const multer = require('multer');
 const fs = require('fs');
 
 const upload = multer();
 
-var app = express();
+let app = express();
 app.use(session({
     secret: 'secret',
     resave: true,
@@ -15,10 +15,12 @@ app.use(session({
 }));
 app.use(express.static('public'));
 
-var authenticateController = require('./controllers/authenticate-controller');
-var registerController = require('./controllers/register-controller');
-var verifyShape = require('./session/verif_shape');
-var verifyColor = require('./session/verif_color');
+let authenticateController = require('./controllers/authenticate-controller');
+let registerController = require('./controllers/register-controller');
+let verifyShape = require('./session/verif_shape');
+let verifyColor = require('./session/verif_color');
+let saveProject = require('./session/save_project');
+let reqUser = require('./session/req_user');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -63,6 +65,10 @@ app.post('/controllers/authenticate-controller', authenticateController.authenti
 app.post('/session/verif_shape', verifyShape.verifyshape);
 //POST METHOD TO VERIFY IN THE DATABASE IS COLOR EXISTXCV
 app.post('/session/verif_color', verifyColor.verifycolor);
+//POST METHOD TO SAVE IN THE PROJECTS TABLE
+app.post('/session/save_project', saveProject.saveproject);
+//POST METHOD TO QUERY IN THE TABLE USERS
+app.post('/session/req_user', reqUser.requser);
 
 /* sound capture and use of speech api */
 async function testGoogleTextToSpeech(audioBuffer) {
