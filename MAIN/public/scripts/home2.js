@@ -7,8 +7,7 @@ let username;
 let user_id;
 //let shape_verf, color_verf;
 let color_hexcode;
-let color_id;
-let shape_id;
+
 
 //HERE WE EXECUTE ALL THAT THE MAIN METHOD HAVE
 main();
@@ -55,7 +54,7 @@ function main() {
 
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
-    arrayobjs.push(['cube', 0xf9d62e]);
+    arrayobjs.push(['cube', 'green', 16, 12]);
 
 
     function render(time) {
@@ -112,6 +111,8 @@ export function instanciateobj(tshape, tcolor) {
     console.log(arrayobjs);
     let shape_verf, color_verf;
     let command_three;
+	let color_id;
+	let shape_id;
 
     // PART 2
 
@@ -130,6 +131,7 @@ export function instanciateobj(tshape, tcolor) {
         command_three = data.constructor;
         shape_id = data.shape_id;
         console.log(shape_verf);
+		console.log("shape id: " + shape_id);
         console.log(command_three);
 
         let xhr2 = new XMLHttpRequest();
@@ -148,6 +150,7 @@ export function instanciateobj(tshape, tcolor) {
                 color_id = data.color_id;
             }
             console.log(color_verf);
+			console.log("color id: " + color_id);
             console.log(color_hexcode);
 
             console.log(shape_verf + ": " + color_verf);
@@ -161,6 +164,7 @@ export function instanciateobj(tshape, tcolor) {
                 cube.position.set(randBet(2), randBet(2), 0);
                 console.log("NEW CUBE");
                 arrayobjs.push([tshape, tcolor, color_id, shape_id]);
+				console.log(arrayobjs);
             }
             //console.log(dataRecieved);
             // if the color exist, here made a post to the backend to verify that
@@ -207,19 +211,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function save() {
-    console.log("function save");
-    let project_name = document.getElementById("projectname").textContent;
-    console.log(shape_id + " " + color_id);
-    console.log(user_id + " " + project_name);
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", "/session/save_project", true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify({
-        user_name: username.username,
-        user_id: user_id,
-        project_name: document.getElementById("projectname").textContent,
-        shapes_id: shape_id,
-        colors_id: color_id
-    }));
+    console.log("Function Save, processing");
+	let user_idtmp;
+	//GET USERNAME FROM OR OWN API
+    fetch('/apiuser')
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            // Work with JSON data here
+            username = data;
+            
+        })
+        .catch(err => {
+            // Do something for an error here
+        })
+	console.log("user access to: " + username.username);
+	let xhr3 = new XMLHttpRequest();
+	xhr3.open("POST", "/session/req_user", true);
+	xhr3.setRequestHeader('Content-Type', 'application/json');
+	xhr3.send(JSON.stringify({
+		user_name: username.username
+	}));
+	xhr3.onload = function () {
+		let data = JSON.parse(this.responseText);
+		user_idtmp = data.user_id;
+			
+			// SAVE PROJECT
+			let project_name = document.getElementById("projectname").value;
+			let xhr = new XMLHttpRequest();
+			xhr.open("POST", "/session/save_project", true);
+			xhr.setRequestHeader('Content-Type', 'application/json');
+			xhr.send(JSON.stringify({
+				user_name: username.username,
+				user_id: user_idtmp,
+				project_name: document.getElementById("projectname").value,
+				array_objs: arrayobjs
+			}));
+		
+	}
+
 
 }

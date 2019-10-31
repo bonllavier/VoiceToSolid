@@ -16,7 +16,8 @@ module.exports.verifycolor = function (req, res) {
                     res.json({
                         status: true,
                         message: 'Color exist',
-                        result: results[0].color_hex_code
+                        result: results[0].color_hex_code,
+						color_id: results[0].color_id
                     })
             }
             else {

@@ -41,6 +41,7 @@ function uploadSoundData(blob) {
             console.log(e.target.responseText);
             var letters = /^[A-Za-z]+$/;
             if (textranscript.match(/[A-Za-z]/i)) {
+				textranscript = textranscript.toLowerCase();
                 if (textranscript.includes(" ")) {
                     var objgoogle = textranscript.split(" ");
                 }
