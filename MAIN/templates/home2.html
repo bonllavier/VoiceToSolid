@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>VoiceToSolid</title>
-	    <style>
+    <style>
 
 
         body {
@@ -19,6 +19,7 @@
     </style>
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
@@ -30,7 +31,7 @@
         <p>HOW TO USE:</p>
         <p style="color: rgb(0,0,0);">Just press the&nbsp;<strong>RED BUTTON</strong>&nbsp;below to record a command, in order to show it in the Canvas.</p>
         <hr>
-        <input type="text" id="projectname"  value="project_name" style="height: 38px; margin-bottom: 3px;"/>
+        <input type="text" id="projectname" value="project_name" style="height: 38px; margin-bottom: 3px;" />
         <button class="btn btn-primary" type="button" id="savebtn" style="width: 180px; margin-top: -5px;">SAVE</button>
         <canvas id="c">
         </canvas>
@@ -51,10 +52,24 @@
             </div>
         </div><button class="btn btn-primary text-center" type="button" style="width: 220px;height: 80px;margin-right: 0;margin-top: 7PX;">SAVE PROJECT</button><button class="btn btn-primary text-center" type="button" style="width: 220px;height: 80px;margin-right: 0;margin-top: 7px;">OPEN PROJECT</button>
         <hr>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                OPEN PROJECT
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </div>
+        <hr>
     </div>
     <script type="module" src="/scripts/home2.js"></script>
     <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
     <script type="module" src="/scripts/client-app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 
 </html>
