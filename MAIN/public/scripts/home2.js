@@ -1,5 +1,7 @@
 import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r108/build/three.module.js';
-
+import {OBJLoader2} from 'https://threejsfundamentals.org/threejs/resources/threejs/r110/examples/jsm/loaders/OBJLoader2.js';
+import {MTLLoader} from 'https://threejsfundamentals.org/threejs/resources/threejs/r110/examples/jsm/loaders/MTLLoader.js';
+import {MtlObjBridge} from 'https://threejsfundamentals.org/threejs/resources/threejs/r110/examples/jsm/loaders/obj2/bridge/MtlObjBridge.js';
 
 let arrayobjs = [];
 let camera, scene, renderer;
@@ -9,10 +11,14 @@ let user_id;
 let color_hexcode;
 
 
+
+
+
 //HERE WE EXECUTE ALL THAT THE MAIN METHOD HAVE
 main();
 
 function main() {
+
 
     // OBJECTS THAT THE DATABASE NEEDS ADN FOR THE SESSIONS
     let projectname = "default";
@@ -60,9 +66,11 @@ function main() {
     function render(time) {
         time *= 0.001; // convert time to seconds
 
-        cube.rotation.x = time;
-        cube.rotation.y = time;
-
+		for (let cont = 0; cont < scene.children.length; cont++)
+		{
+			scene.children[cont].rotation.x = time;
+			scene.children[cont].rotation.y = time;
+		}
         renderer.render(scene, camera);
 
         requestAnimationFrame(render);
@@ -99,6 +107,7 @@ function main() {
     //METHOD TO MANAGE THE CLICK METHOD IN THE RED BUTTON RECORD, HERE INITIATE THE RECORDING OF THE AUDIO BUFFER AND INSTANTIATE THE OBJECT
 
 }
+
 
 //A METHOD TO GENERATE RANDOM NUMBERS BETWEEN 0 AND A MAX NUMBER
 function randBet(maxnum) {
@@ -172,6 +181,18 @@ export function instanciateobj(tshape, tcolor) {
 
         }
     }
+}
+
+export function instanciatemafe() {
+    const mtlLoader = new MTLLoader();
+    mtlLoader.load('https://threejsfundamentals.org/threejs/resources/models/windmill/windmill.mtl', (mtlParseResult) => {
+      const objLoader = new OBJLoader2();
+      const materials =  MtlObjBridge.addMaterialsFromMtlLoader(mtlParseResult);
+      objLoader.addMaterials(materials);
+      objLoader.load('https://threejsfundamentals.org/threejs/resources/models/windmill/windmill.obj', (root) => {
+        scene.add(root);
+      });
+    });
 }
 
 const cleanButton = document.getElementById("cleanbtn");

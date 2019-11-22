@@ -1,19 +1,42 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
+<head>	
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>VoiceToSolid Register</title>
-    <link rel="stylesheet" type="text/css" href="/css/log.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i">
+    <link rel="stylesheet" href="/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/Login-Form-Clean.css">
 </head>
 <body>
-    <div class="login-form">
-        <h1>Register Form</h1>
+    <nav class="navbar navbar-dark navbar-expand-md fixed-top navbar-custom" style="background-color: #ff165d;">
+        <div class="container-fluid"><i class="fa fa-angellist" style="color: #ffffff;padding-right: 15px ;"></i><a class="navbar-brand" href="/">Voicetosolid</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="nav navbar-nav ml-auto" style="color: #ffffff;">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/signup" style="color: #ffffff;">Sign Up</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/login" style="color: #ffffff;">Log In</a></li>
+                </ul>
+        </div>
+        </div>
+    </nav>
+    <div class="login-clean" style="background-image: url(&quot;/img/fondo-geo.png&quot;);background-position: center;background-size: cover;background-repeat: no-repeat;">
         <form action="/controllers/register-controller" method="POST">
-            <input type="text" name="name" placeholder="Username" required>
-            <input type="text" name="email" placeholder="e-mail" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <input type="submit">
-        </form>
+            <h2 class="sr-only">Register Form</h2>
+            <div class="illustration"><i class="fa fa-user-secret"></i></div>
+            <div class="form-group"><input class="form-control" type="text" name="name" placeholder="User"></div>
+            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Sign Up</button></div><a class="forgot" href="#">Forgot your email or password?</a></form>
     </div>
+    <footer class="py-5" style="background-color: rgb(33,139,245);">
+        <div class="container">
+            <p class="text-center text-white m-0 small" style="font-size: 17px;">Holberton School © 2019</p>
+        </div>
+    </footer>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

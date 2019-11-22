@@ -1,137 +1,168 @@
 ﻿<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
-
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>VoiceToSolid</title>
-
-    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i">
+    <link rel="stylesheet" href="/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+	    <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">VoiceToSolid</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="/">Home<span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="/aboutus">About Us</a>
-                <a class="nav-item nav-link" href="/login">LogIn</a>
-                <a class="btn btn-outline-primary" href="/signup">Sign up</a>
-            </div>
+    <nav class="navbar navbar-dark navbar-expand-md fixed-top navbar-custom" style="background-color: #ff165d;">
+        <div class="container-fluid"><i class="fa fa-angellist" style="color: #ffffff;padding-right: 15px ;"></i><a class="navbar-brand" href="#">Voicetosolid</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="nav navbar-nav ml-auto" style="color: #ffffff;">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/" style="color: #ffffff;">HOME</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/aboutus" style="color: #ffffff;">ABOUT US</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/signup" style="color: #ffffff;">Sign Up</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/login" style="color: #ffffff;">Log In</a></li>
+                </ul>
+        </div>
         </div>
     </nav>
-
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-        <div class="col-md-8 p-lg-10 mx-auto my-10">
-            <img src="/img/banner1.jpg" class="img-fluid" alt="Responsive image">
-            <a class="btn btn-outline-secondary" href="#">Start Now</a>
+    <header data-aos="fade-up-right" class="masthead text-center text-white" style="background-image: url(&quot;/img/fondo-geo.png&quot;);">
+        <div class="masthead-content">
+            <div class="container">
+                <h1 class="masthead-heading mb-0"><strong>Create Geometric Shapes</strong></h1>
+                <h2 class="masthead-subheading mb-0"><strong>only with your voice</strong></h2>
+            </div>
         </div>
-        <div class="product-device box-shadow d-none d-md-block"></div>
-        <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
-    </div>
-
-    <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h1 class="display-4">Technologies</h1>
-        <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It's built with default Bootstrap components and utilities with little customization.</p>
-    </div>
-
-    <div class="container">
-        <div class="card-deck mb-3 text-center">
-            <div class="card mb-3 box-shadow">
-                <div class="card-header">
-                    <h4 class="my-0 font-weight-normal">Free</h4>
+    </header>
+    <section>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="p-5"><img class="img-fluid" src="/img/banner1.jpg"></div>
                 </div>
-                <div class="card-body">
-                    <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
-                    <ul class="list-unstyled mt-3 mb-4">
-                        <li>10 users included</li>
-                        <li>2 GB of storage</li>
-                        <li>Email support</li>
-                        <li>Help center access</li>
-                    </ul>
-                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
-                </div>
-            </div>
-            <div class="card mb-3 box-shadow">
-                <div class="card-header">
-                    <h4 class="my-0 font-weight-normal">Pro</h4>
-                </div>
-                <div class="card-body">
-                    <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1>
-                    <ul class="list-unstyled mt-3 mb-4">
-                        <li>20 users included</li>
-                        <li>10 GB of storage</li>
-                        <li>Priority email support</li>
-                        <li>Help center access</li>
-                    </ul>
-                    <button type="button" class="btn btn-lg btn-block btn-primary">Get started</button>
-                </div>
-            </div>
-            <div class="card mb-3 box-shadow">
-                <div class="card-header">
-                    <h4 class="my-0 font-weight-normal">JS</h4>
-                </div>
-                <div class="card-body">
-                    <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>
-                    <ul class="list-unstyled mt-3 mb-4">
-                        <li>30 users included</li>
-                        <li>15 GB of storage</li>
-                        <li>Phone and email support</li>
-                        <li>Help center access</li>
-                    </ul>
-                    <button type="button" class="btn btn-lg btn-block btn-primary">Contact us</button>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="p-5">
+                        <h2 class="display-4" style="color: rgb(33,139,245);"><strong>How does it work?</strong>...</h2>
+                        <p>From voice commands, an application to create solids based on the voice commands received, painting them on a canvas inside the application. Sign up to try it.<br></p>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <footer class="pt-4 my-md-5 pt-md-5 border-top">
-            <div class="row">
-                <div class="col-12 col-md">
-                    <img class="mb-2" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
-                    <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
-                </div>
-                <div class="col-6 col-md">
-                    <h5>Node.js</h5>
-                    <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#">Cool stuff</a></li>
-                        <li><a class="text-muted" href="#">Random feature</a></li>
-                        <li><a class="text-muted" href="#">Team feature</a></li>
-                        <li><a class="text-muted" href="#">Stuff for developers</a></li>
-                        <li><a class="text-muted" href="#">Another one</a></li>
-                        <li><a class="text-muted" href="#">Last time</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md">
-                    <h5>Resources</h5>
-                    <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#">Resource</a></li>
-                        <li><a class="text-muted" href="#">Resource name</a></li>
-                        <li><a class="text-muted" href="#">Another resource</a></li>
-                        <li><a class="text-muted" href="#">Final resource</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md">
-                    <h5>About</h5>
-                    <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#">Team</a></li>
-                        <li><a class="text-muted" href="#">Locations</a></li>
-                        <li><a class="text-muted" href="#">Privacy</a></li>
-                        <li><a class="text-muted" href="#">Terms</a></li>
-                    </ul>
+    </section>
+    <section style="background-color: rgba(62,193,211,0.16);">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 col-xl-8 offset-xl-2 order-lg-1">
+                    <div class="p-5">
+                        <h2 class="text-center display-4" style="color: #ff165d;"><strong>Technologies used</strong></h2>
+                        <p class="text-center">These are the tools we use to build our project.</p>
+                    </div>
                 </div>
             </div>
-        </footer>
-    </div>
-
-
+        </div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 col-xl-12 order-lg-1">
+                    <div class="p-2" style="padding: 0;">
+                        <h2 class="text-center display-4">Frontend</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 order-lg-2">
+                    <div><img class="img-fluid" src="/img/js.png"></div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 order-lg-2">
+                    <div><img class="img-fluid" src="/img/webGL.png"></div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 offset-sm-3 offset-md-0 order-lg-2">
+                    <div><img class="img-fluid" src="/img/bootstrap.png"></div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 col-xl-12 order-lg-1">
+                    <div class="p-2" style="padding: 0;">
+                        <h2 class="text-center display-4">Backend</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 order-lg-2">
+                    <div><img class="img-fluid" src="/img/node.png"></div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 order-lg-2">
+                    <div><img class="img-fluid" src="/img/express.png"></div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 offset-sm-3 offset-md-0 order-lg-2">
+                    <div><img class="img-fluid" src="/img/mysql.png"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="p-5"><img class="rounded-circle img-fluid" src="/img/perfilxime.png"></div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="p-5">
+                        <h2 class="display-4">Carolina Andrade</h2>
+                        <p class="text-justify">Passionate about software development that provides creative solutions from a multidisciplinary perspective, relating knowledge and experiences from mechatronics, software engineering and psychology.<br>She mostly will contribute
+                            by polishing the presentation of the product, focusing if the product is friendly and can be used without much inconvenience by many users.<br></p><i class="fa fa-github"  style="font-size: 30px;margin-right: 10px; "></i><i class="fa fa-linkedin"
+                            style="font-size: 30px;margin-right: 10px;"></i><i class="fa fa-twitter" style="font-size: 30px;margin-right: 10px;"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-1">
+                    <div class="p-5"><img class="rounded-circle img-fluid" src="/img/perfiljavimetal1.png"></div>
+                </div>
+                <div class="col-lg-6 order-lg-2">
+                    <div class="p-5">
+                        <h2 class="display-4">Javier Bonilla</h2>
+                        <p class="text-justify">Computer Graphics lover and Software Developer.Self and fast learner, competitive person, determined to provide my technical and Personal capabilities to provide and optimize solutions for T.I.<br></p><i class="fa fa-github" style="font-size: 30px;margin-right: 10px;"></i>
+                        <i
+                            class="fa fa-linkedin" style="font-size: 30px;margin-right: 10px;"></i><i class="fa fa-twitter" style="font-size: 30px;margin-right: 10px;"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="p-5"><img class="rounded-circle img-fluid" src="/img/perfilgio1.png"></div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="p-5">
+                        <h2 class="display-4">Giovanny Rubio</h2>
+                        <p class="text-justify">Junior Web Developer HTML5 based technologies. Frontend Backend developer.<br>Giovanny has more experience as a front end developer, therefore he will be the one who is in charge of the presentation and the functionality of the
+                            project, Also verifying common errors, in the interface, and making the experience more friendly, in our web application.<br></p><i class="fa fa-github" style="font-size: 30px;margin-right: 10px;"></i><i class="fa fa-linkedin"
+                            style="font-size: 30px;margin-right: 10px;"></i><i class="fa fa-twitter" style="font-size: 30px;margin-right: 10px;"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="py-5" style="background-color: rgb(33,139,245);">
+        <div class="container">
+            <p class="text-center text-white m-0 small" style="font-size: 17px;">Holberton School © 2019</p>
+        </div>
+    </footer>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/bs-animation.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

@@ -40,13 +40,17 @@ function uploadSoundData(blob) {
             textranscript = e.target.responseText;
             console.log(e.target.responseText);
             var letters = /^[A-Za-z]+$/;
-            if (textranscript.match(/[A-Za-z]/i)) {
+			if(textranscript.match("Maria")) {
+				home2.instanciatemafe();
+			}
+            else if (textranscript.match(/[A-Za-z]/i)) {
 				textranscript = textranscript.toLowerCase();
                 if (textranscript.includes(" ")) {
                     var objgoogle = textranscript.split(" ");
                 }
                 home2.instanciateobj(objgoogle[0], objgoogle[1]);
             }
+			
 
         }
     };

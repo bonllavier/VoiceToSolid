@@ -2,8 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\controllers",
+    "\\public",
+    "\\scripts",
     "\\templates"
   ],
-  "SelectedNode": "\\index.js",
+  "SelectedNode": "\\scripts\\testgui.js",
   "PreviewInSolutionExplorer": false
 }
